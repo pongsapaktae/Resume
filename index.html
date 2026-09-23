@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="th" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Developer Resume</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,22 +20,20 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'Sarabun', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Inter & Sarabun -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
-            font-family: 'Inter', 'Sarabun', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Print Specific Styles for perfect PDF generation */
@@ -124,10 +121,13 @@
                 <div class="flex flex-col sm:flex-row md:flex-col items-center sm:items-start md:items-end gap-4 w-full md:w-auto">
                     
                     <!-- Profile Image Placeholder -->
-                    <div class="w-32 h-32 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 border-4 border-white dark:border-slate-800 shadow-md flex items-center justify-center text-slate-400 dark:text-slate-500">
-                        <!-- เปลี่ยน URL ในแอตทริบิวต์ src ด้านล่างนี้เป็นลิงก์รูปภาพของคุณ -->
-                        <img src="ใส่ลิงก์รูปภาพของคุณตรงนี้" alt="Profile" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <i class="fa-solid fa-user text-4xl hidden"></i>
+                    <div class="w-32 h-32 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 border-4 border-white dark:border-slate-800 shadow-md flex items-center justify-center text-slate-400 dark:text-slate-500 relative group">
+                        
+                        <!-- ⚠️ เปลี่ยน URL ในแอตทริบิวต์ src ด้านล่างนี้เป็นลิงก์รูปภาพของคุณ ⚠️ -->
+                        <img src="https://cdn.phototourl.com/free/2026-09-23-cf3b175d-554e-4c99-b6ce-635a8e0f7543.jpg" alt="Profile" class="w-full h-full object-cover z-10" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        
+                        <!-- ไอคอนนี้จะแสดงขึ้นมาถ้ารูปภาพโหลดไม่สำเร็จ หรือยังไม่ได้ใส่ลิงก์รูป -->
+                        <i class="fa-solid fa-user text-4xl absolute"></i>
                     </div>
 
                     <!-- Contact Info Grid -->
@@ -230,7 +230,7 @@
 
                     <div class="space-y-4">
                         <!-- Project 1 -->
-                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:shadow-md transition-shadow">
                             <div class="flex justify-between items-start">
                                 <h3 class="font-bold text-slate-900 dark:text-white text-base">
                                     Cloud-based Task Management App
@@ -239,19 +239,19 @@
                                     <span>Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </a>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-2 leading-relaxed">
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-3 leading-relaxed">
                                 Real-time task management application featuring Drag & Drop board, embedded chat, and Telegram notifications.
                             </p>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">React</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Node.js</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Socket.io</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">MongoDB</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">React</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">Node.js</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">Socket.io</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">MongoDB</span>
                             </div>
                         </div>
 
                         <!-- Project 2 -->
-                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:shadow-md transition-shadow">
                             <div class="flex justify-between items-start">
                                 <h3 class="font-bold text-slate-900 dark:text-white text-base">
                                     Developer Portfolio & Blog Engine
@@ -260,13 +260,13 @@
                                     <span>GitHub</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </a>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-2 leading-relaxed">
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-3 leading-relaxed">
                                 Developer-centric blog engine supporting Markdown, syntax highlighting, and SEO optimization (Lighthouse score 99+).
                             </p>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Next.js</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">TypeScript</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Tailwind CSS</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">Next.js</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">TypeScript</span>
+                                <span class="px-2 py-0.5 text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded">Tailwind CSS</span>
                             </div>
                         </div>
                     </div>
@@ -286,56 +286,9 @@
                         </h2>
                     </div>
 
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Languages</h4>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">React</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Node.js</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Socket.io</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">MongoDB</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
-                            <div class="flex justify-between items-start">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base" data-i18n="proj2Title">
-                                    Developer Portfolio & Blog Engine
-                                </h3>
-                                <a href="#" class="text-xs text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1">
-                                    <span>GitHub</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                </a>
-                            </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-2 leading-relaxed" data-i18n="proj2Desc">
-                                เว็บบล็อกสำหรับนักพัฒนาที่รองรับ Markdown, Syntax Highlighting และ SEO-optimized ด้วยคะแนน Lighthouse 99+
-                            </p>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Next.js</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">TypeScript</span>
-                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Tailwind CSS</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- Sidebar Column (Right 1 Col) -->
-            <div class="space-y-8">
-                
-                <!-- Technical Skills -->
-                <section class="page-break">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fa-solid fa-layer-group text-brand-600 dark:text-brand-400 text-lg"></i>
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="skillsHeader">
-                            ทักษะความเชี่ยวชาญ
-                        </h2>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" data-i18n="skillCat1">Languages</h4>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">Languages</h4>
                             <div class="flex flex-wrap gap-1.5">
                                 <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">JavaScript</span>
                                 <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">TypeScript</span>
@@ -345,7 +298,7 @@
                         </div>
 
                         <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Frameworks & Tools</h4>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">Frameworks & Tools</h4>
                             <div class="flex flex-wrap gap-1.5">
                                 <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">React / Next.js</span>
                                 <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Node.js / Express</span>
@@ -357,7 +310,7 @@
                         </div>
 
                         <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Cloud & DevOps</h4>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">Cloud & DevOps</h4>
                             <div class="flex flex-wrap gap-1.5">
                                 <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">AWS (S3, EC2)</span>
                                 <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Vercel</span>
@@ -383,7 +336,7 @@
                         <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                             Chulalongkorn University
                         </p>
-                        <p class="text-xs text-slate-400 mt-1">
+                        <p class="text-xs text-slate-500 dark:text-slate-500 mt-1 font-medium">
                             2015 - 2019 • GPA 3.65 (2nd Class Honors)
                         </p>
                     </div>
@@ -398,14 +351,14 @@
                         </h2>
                     </div>
 
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        <li class="flex justify-between">
-                            <span>Thai</span>
-                            <span class="font-medium text-slate-400">Native</span>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-200 dark:border-slate-800 pt-2">
+                        <li class="flex justify-between items-center">
+                            <span class="font-semibold text-slate-800 dark:text-slate-200">Thai</span>
+                            <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-600 dark:text-slate-400">Native</span>
                         </li>
-                        <li class="flex justify-between">
-                            <span>English</span>
-                            <span class="font-medium text-slate-400">Professional Working</span>
+                        <li class="flex justify-between items-center">
+                            <span class="font-semibold text-slate-800 dark:text-slate-200">English</span>
+                            <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-600 dark:text-slate-400">Professional</span>
                         </li>
                     </ul>
                 </section>
