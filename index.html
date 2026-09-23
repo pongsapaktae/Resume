@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Developer Resume</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Sarabun', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter & Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+        }
+
+        /* Print Specific Styles for perfect PDF generation */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+            .resume-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            .page-break {
+                page-break-inside: avoid;
+            }
+            .dark {
+                color-scheme: light !important;
+            }
+            /* Force light mode background for print even if dark mode was active */
+            .dark body, .dark .resume-card, .dark .bg-slate-900, .dark .bg-slate-800 {
+                background-color: #ffffff !important;
+                color: #1e293b !important;
+            }
+            .dark .text-white, .dark .text-slate-200, .dark .text-slate-300 {
+                color: #1e293b !important;
+            }
+            .dark .text-slate-400 {
+                color: #475569 !important;
+            }
+            .dark .border-slate-800, .dark .border-slate-700 {
+                border-color: #e2e8f0 !important;
+            }
+            .dark .bg-slate-800\/50, .dark .bg-slate-800 {
+                background-color: #f8fafc !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 py-6 sm:py-10 px-3 sm:px-6">
+
+    <!-- Floating Control Bar -->
+    <div class="no-print fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-4 py-2.5 rounded-full shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center space-x-3 sm:space-x-4 text-sm font-medium">
+        <!-- Language Switcher -->
+        <button id="langToggle" onclick="toggleLanguage()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+            <i class="fa-solid fa-globe text-brand-500"></i>
+            <span id="langText">TH / EN</span>
+        </button>
+
+        <div class="h-4 w-[1px] bg-slate-300 dark:bg-slate-600"></div>
+
+        <!-- Dark Mode Switcher -->
+        <button id="themeToggle" onclick="toggleDarkMode()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+            <i id="themeIcon" class="fa-solid fa-moon text-amber-500"></i>
+            <span id="themeText" class="hidden sm:inline">Theme</span>
+        </button>
+
+        <div class="h-4 w-[1px] bg-slate-300 dark:bg-slate-600"></div>
+
+        <!-- Print/PDF Button -->
+        <button onclick="window.print()" class="flex items-center space-x-2 px-4 py-1.5 bg-brand-600 hover:bg-brand-700 text-white rounded-full transition shadow-md shadow-brand-500/20">
+            <i class="fa-solid fa-print"></i>
+            <span data-i18n="printBtn">พิมพ์ / บันทึก PDF</span>
+        </button>
+    </div>
+
+    <!-- Main Resume Container -->
+    <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-10 transition-colors duration-300 resume-card">
+        
+        <!-- Header Section -->
+        <header class="border-b border-slate-200 dark:border-slate-800 pb-8 mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white" data-i18n="name">
+                        สมชาย พัฒนระบบ
+                    </h1>
+                    <p class="text-lg font-semibold text-brand-600 dark:text-brand-400 mt-1" data-i18n="title">
+                        Senior Full Stack Developer
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 max-w-xl leading-relaxed" data-i18n="summary">
+                        นักพัฒนาซอฟต์แวร์ที่มีประสบการณ์มากกว่า 5 ปี ในการออกแบบและสร้าง Web Applications ขนาดใหญ่ ชำนาญการใช้ React, Node.js, TypeScript และ Cloud Architecture หลงใหลในการเขียนโค้ดที่สะอาดและประสิทธิภาพสูง
+                    </p>
+                </div>
+                
+                <!-- Contact Info Grid -->
+                <div class="w-full md:w-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <a href="mailto:somchai.dev@email.com" class="flex items-center space-x-2.5 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                        <i class="fa-solid fa-envelope w-4 text-brand-500"></i>
+                        <span>somchai.dev@email.com</span>
+                    </a>
+                    <a href="tel:+66812345678" class="flex items-center space-x-2.5 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                        <i class="fa-solid fa-phone w-4 text-brand-500"></i>
+                        <span>+66 81 234 5678</span>
+                    </a>
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-location-dot w-4 text-brand-500"></i>
+                        <span data-i18n="location">กรุงเทพมหานคร, ประเทศไทย</span>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="flex items-center space-x-2.5 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                        <i class="fa-brands fa-github w-4 text-brand-500"></i>
+                        <span>github.com/somchaidev</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="flex items-center space-x-2.5 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                        <i class="fa-brands fa-linkedin w-4 text-brand-500"></i>
+                        <span>linkedin.in/somchaidev</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Body Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Main Column (Left/Top 2 Cols) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Experience Section -->
+                <section class="page-break">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-briefcase text-brand-600 dark:text-brand-400 text-lg"></i>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="expHeader">
+                            ประวัติการทำงาน
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6 border-l-2 border-slate-200 dark:border-slate-800 pl-4 ml-2">
+                        
+                        <!-- Job 1 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[21px] top-1.5 w-3 h-3 rounded-full bg-brand-600 ring-4 ring-white dark:ring-slate-900"></div>
+                            <div class="flex justify-between items-baseline flex-wrap">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base" data-i18n="job1Title">
+                                    Senior Full Stack Developer
+                                </h3>
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300" data-i18n="job1Date">
+                                    2022 - ปัจจุบัน
+                                </span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2" data-i18n="job1Company">
+                                Tech Innovation Co., Ltd. • กรุงเทพฯ
+                            </p>
+                            <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
+                                <li data-i18n="job1Desc1">นำทีมพัฒนาระบบ E-Commerce ที่รองรับผู้ใช้งานมากกว่า 100,000 users/วัน ด้วย React, Next.js และ Node.js</li>
+                                <li data-i18n="job1Desc2">ออกแบบและปรับปรุง Microservices Architecture ลด Response Time ลงได้ 35%</li>
+                                <li data-i18n="job1Desc3">สอนงานและให้คำแนะนำแก่นักพัฒนาสมาชิกร่วมทีม 5 คน ในการประยุกต์ใช้ CI/CD และ Code Review practices</li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[21px] top-1.5 w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></div>
+                            <div class="flex justify-between items-baseline flex-wrap">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base" data-i18n="job2Title">
+                                    Frontend Developer
+                                </h3>
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400" data-i18n="job2Date">
+                                    2019 - 2022
+                                </span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2" data-i18n="job2Company">
+                                Digital Solutions Agency • กรุงเทพฯ
+                            </p>
+                            <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
+                                <li data-i18n="job2Desc1">พัฒนา Web Application แบบ Responsive สำหรับลูกค้าองค์กรขนาดใหญ่มากกว่า 10 โครงการ</li>
+                                <li data-i18n="job2Desc2">สร้าง Reusable UI Component Library ด้วย Vue.js และ Tailwind CSS เพิ่มความเร็วการพัฒนาขึ้น 20%</li>
+                                <li data-i18n="job2Desc3">ทำงานร่วมกับทีม UX/UI Designer เพื่อเปลี่ยนแบบ Figma ให้เป็นเว็บที่รองรับ Accessibility (WCAG)</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Featured Projects Section -->
+                <section class="page-break">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-code text-brand-600 dark:text-brand-400 text-lg"></i>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="projHeader">
+                            ผลงานเด่น (Projects)
+                        </h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Project 1 -->
+                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base" data-i18n="proj1Title">
+                                    Cloud-based Task Management App
+                                </h3>
+                                <a href="#" class="text-xs text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1">
+                                    <span>Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-2 leading-relaxed" data-i18n="proj1Desc">
+                                แอปบริหารจัดการงานสำหรับทีม ทำงานแบบ Real-time รองรับ Drag & Drop Board, Chat และแจ้งเตือนผ่าน Telegram
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">React</span>
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Node.js</span>
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Socket.io</span>
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">MongoDB</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base" data-i18n="proj2Title">
+                                    Developer Portfolio & Blog Engine
+                                </h3>
+                                <a href="#" class="text-xs text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1">
+                                    <span>GitHub</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 mb-2 leading-relaxed" data-i18n="proj2Desc">
+                                เว็บบล็อกสำหรับนักพัฒนาที่รองรับ Markdown, Syntax Highlighting และ SEO-optimized ด้วยคะแนน Lighthouse 99+
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Next.js</span>
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">TypeScript</span>
+                                <span class="px-2 py-0.5 text-[11px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Sidebar Column (Right 1 Col) -->
+            <div class="space-y-8">
+                
+                <!-- Technical Skills -->
+                <section class="page-break">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-layer-group text-brand-600 dark:text-brand-400 text-lg"></i>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="skillsHeader">
+                            ทักษะความเชี่ยวชาญ
+                        </h2>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" data-i18n="skillCat1">Languages</h4>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">JavaScript</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">TypeScript</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">HTML/CSS</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50 rounded-lg">SQL</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" data-i18n="skillCat2">Frameworks & Tools</h4>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">React / Next.js</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Node.js / Express</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Tailwind CSS</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">PostgreSQL</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Docker</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Git / GitHub</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" data-i18n="skillCat3">Cloud & DevOps</h4>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">AWS (S3, EC2)</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">Vercel</span>
+                                <span class="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg">GitHub Actions</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="page-break">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-graduation-cap text-brand-600 dark:text-brand-400 text-lg"></i>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="eduHeader">
+                            การศึกษา
+                        </h2>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm" data-i18n="eduDegree">
+                            วิทยาศาสตรบัณฑิต วิทยาการคอมพิวเตอร์
+                        </h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5" data-i18n="eduUni">
+                            จุฬาลงกรณ์มหาวิทยาลัย
+                        </p>
+                        <p class="text-xs text-slate-400 mt-1" data-i18n="eduYear">
+                            2015 - 2019 • GPA 3.65 (เกียรตินิยมอันดับสอง)
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Languages Section -->
+                <section class="page-break">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-language text-brand-600 dark:text-brand-400 text-lg"></i>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white" data-i18n="langHeader">
+                            ภาษา
+                        </h2>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex justify-between">
+                            <span data-i18n="langTh">ภาษาไทย</span>
+                            <span class="font-medium text-slate-400" data-i18n="langThProf">ภาษาแม่ (Native)</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span data-i18n="langEn">ภาษาอังกฤษ</span>
+                            <span class="font-medium text-slate-400" data-i18n="langEnProf">สื่อสารได้ดีเยี่ยม (Professional)</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Dictionary for Internationalization (i18n)
+        const i18n = {
+            th: {
+                printBtn: "พิมพ์ / บันทึก PDF",
+                name: "สมชาย พัฒนระบบ",
+                title: "Senior Full Stack Developer",
+                summary: "นักพัฒนาซอฟต์แวร์ที่มีประสบการณ์มากกว่า 5 ปี ในการออกแบบและสร้าง Web Applications ขนาดใหญ่ ชำนาญการใช้ React, Node.js, TypeScript และ Cloud Architecture หลงใหลในการเขียนโค้ดที่สะอาดและประสิทธิภาพสูง",
+                location: "กรุงเทพมหานคร, ประเทศไทย",
+                expHeader: "ประวัติการทำงาน",
+                job1Title: "Senior Full Stack Developer",
+                job1Company: "Tech Innovation Co., Ltd. • กรุงเทพฯ",
+                job1Date: "2022 - ปัจจุบัน",
+                job1Desc1: "นำทีมพัฒนาระบบ E-Commerce ที่รองรับผู้ใช้งานมากกว่า 100,000 users/วัน ด้วย React, Next.js และ Node.js",
+                job1Desc2: "ออกแบบและปรับปรุง Microservices Architecture ลด Response Time ลงได้ 35%",
+                job1Desc3: "สอนงานและให้คำแนะนำแก่นักพัฒนาสมาชิกร่วมทีม 5 คน ในการประยุกต์ใช้ CI/CD และ Code Review practices",
+                job2Title: "Frontend Developer",
+                job2Company: "Digital Solutions Agency • กรุงเทพฯ",
+                job2Date: "2019 - 2022",
+                job2Desc1: "พัฒนา Web Application แบบ Responsive สำหรับลูกค้าองค์กรขนาดใหญ่มากกว่า 10 โครงการ",
+                job2Desc2: "สร้าง Reusable UI Component Library ด้วย Vue.js และ Tailwind CSS เพิ่มความเร็วการพัฒนาขึ้น 20%",
+                job2Desc3: "ทำงานร่วมกับทีม UX/UI Designer เพื่อเปลี่ยนแบบ Figma ให้เป็นเว็บที่รองรับ Accessibility (WCAG)",
+                projHeader: "ผลงานเด่น (Projects)",
+                proj1Title: "Cloud-based Task Management App",
+                proj1Desc: "แอปบริหารจัดการงานสำหรับทีม ทำงานแบบ Real-time รองรับ Drag & Drop Board, Chat และแจ้งเตือนผ่าน Telegram",
+                proj2Title: "Developer Portfolio & Blog Engine",
+                proj2Desc: "เว็บบล็อกสำหรับนักพัฒนาที่รองรับ Markdown, Syntax Highlighting และ SEO-optimized ด้วยคะแนน Lighthouse 99+",
+                skillsHeader: "ทักษะความเชี่ยวชาญ",
+                skillCat1: "Languages",
+                skillCat2: "Frameworks & Tools",
+                skillCat3: "Cloud & DevOps",
+                eduHeader: "การศึกษา",
+                eduDegree: "วิทยาศาสตรบัณฑิต วิทยาการคอมพิวเตอร์",
+                eduUni: "จุฬาลงกรณ์มหาวิทยาลัย",
+                eduYear: "2015 - 2019 • GPA 3.65 (เกียรตินิยมอันดับสอง)",
+                langHeader: "ภาษา",
+                langTh: "ภาษาไทย",
+                langThProf: "ภาษาแม่ (Native)",
+                langEn: "ภาษาอังกฤษ",
+                langEnProf: "สื่อสารได้ดีเยี่ยม (Professional)"
+            },
+            en: {
+                printBtn: "Print / Save PDF",
+                name: "Somchai Pattanasystem",
+                title: "Senior Full Stack Developer",
+                summary: "Software Developer with 5+ years of experience designing and building scalable web applications. Proficient in React, Node.js, TypeScript, and Cloud Architecture. Passionate about clean code and performance optimization.",
+                location: "Bangkok, Thailand",
+                expHeader: "Work Experience",
+                job1Title: "Senior Full Stack Developer",
+                job1Company: "Tech Innovation Co., Ltd. • Bangkok",
+                job1Date: "2022 - Present",
+                job1Desc1: "Led a team developing an E-Commerce platform handling 100,000+ daily active users using React, Next.js, and Node.js.",
+                job1Desc2: "Designed and optimized Microservices Architecture, reducing API response times by 35%.",
+                job1Desc3: "Mentored 5 junior developers and implemented CI/CD pipelines and code review best practices.",
+                job2Title: "Frontend Developer",
+                job2Company: "Digital Solutions Agency • Bangkok",
+                job2Date: "2019 - 2022",
+                job2Desc1: "Developed responsive web applications for over 10 enterprise clients.",
+                job2Desc2: "Built a reusable UI component library with Vue.js and Tailwind CSS, increasing development velocity by 20%.",
+                job2Desc3: "Collaborated with UX/UI Designers to convert Figma designs into accessible (WCAG compliant) web apps.",
+                projHeader: "Featured Projects",
+                proj1Title: "Cloud-based Task Management App",
+                proj1Desc: "Real-time task management application featuring Drag & Drop board, embedded chat, and Telegram notifications.",
+                proj2Title: "Developer Portfolio & Blog Engine",
+                proj2Desc: "Developer-centric blog engine supporting Markdown, syntax highlighting, and SEO optimization (Lighthouse score 99+).",
+                skillsHeader: "Technical Skills",
+                skillCat1: "Languages",
+                skillCat2: "Frameworks & Tools",
+                skillCat3: "Cloud & DevOps",
+                eduHeader: "Education",
+                eduDegree: "B.Sc. in Computer Science",
+                eduUni: "Chulalongkorn University",
+                eduYear: "2015 - 2019 • GPA 3.65 (2nd Class Honors)",
+                langHeader: "Languages",
+                langTh: "Thai",
+                langThProf: "Native",
+                langEn: "English",
+                langEnProf: "Professional Working"
+            }
+        };
+
+        let currentLang = 'th';
+
+        // Toggle Language Function
+        function toggleLanguage() {
+            currentLang = currentLang === 'th' ? 'en' : 'th';
+            document.documentElement.lang = currentLang;
+            
+            // Update UI text
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.textContent = i18n[currentLang][key];
+                }
+            });
+        }
+
+        // Toggle Dark Mode Function
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon text-amber-500';
+            } else {
+                html.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-amber-400';
+            }
+        }
+
+        // Auto detect system color scheme preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleDarkMode();
+        }
+    </script>
+</body>
+</html>
